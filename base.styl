@@ -1,0 +1,191 @@
+global-reset()
+
+color1 = #F2506E
+color2 = #4BE2F2
+color3 = #593312
+color4 = #F2D5BB
+color5 = #F2786D
+vFlow = 10px
+animationTime = .4s
+
+body
+	column(1)
+	cf()
+	background-color color5
+	
+	h1
+		font-family alfa-slab-one, serif
+		color rgba(#fff,1)
+		font-weight normal
+		font-size 2.8em
+		padding-left vFlow
+		margin-bottom vFlow
+		margin-top vFlow
+		text-shadow 0px 2px 1px darken(desaturate(color5, 30%), 30%)
+
+		@media screen and (max-width:768px)
+			text-align center
+			padding-left 0
+	
+	h2
+		span(1)
+		font-family alfa-slab-one, serif
+		background-color color2
+		color darken(color2, 70%)
+		text-align center
+		padding (vFlow/1.3) 0
+		font-size 1.3em
+	
+	button
+		column(1)
+		padding vFlow 0
+		background-color color2
+		border 0
+		margin-bottom vFlow
+		text-align center
+		font-family alfa-slab-one, serif
+		color darken(color2, 70%)
+		font-size 1.3em
+		text-decoration underline
+		cursor pointer
+
+	.ledsRow
+		cf()
+		
+		.led
+			column(1/2, cycle:2)
+			height 2em
+			color #fff
+			font-family economica, sans-serif
+			font-size 1.4em
+			text-align center
+
+			&:after
+				content ''
+				height 100%
+				width .1px
+				display inline-block
+				vertical-align middle
+
+
+			&.espressoBoiler
+				background-color color3
+
+			&.steamBoiler
+				background-color rgba(255,255,255,0.75)
+				color color3
+
+			img
+				vertical-align middle
+	
+	.daysBox
+		cf()
+
+		.day
+			font-family economica, sans-serif
+			column(1)
+			cf()
+			background-color color4
+			border-bottom 1px solid darken(desaturate(color4, 30%), 30%)
+			padding vFlow 0
+			position relative
+			
+			@media screen and (min-width: 1024px)
+				span(1/2)
+
+				&:nth-child(odd)
+					box-shadow 1px 0px 0px 0px darken(desaturate(color4, 30%), 30%)
+					z-index 1
+
+			.checkboxAndLabel
+				column(2/5)
+				
+				@media screen and (max-width: 1024px)
+					column(1/4)
+
+				input[type="checkbox"]
+					position absolute
+					left -9999px
+
+					& + label
+						margin-left 40px
+						cursor pointer
+						position relative
+						vertical-align middle
+						font-size 2em
+
+						&:before
+							align(vertical)
+							position absolute
+							left -30px
+							background-color rgba(#fff, 0.7)
+							width 20px
+							height 20px
+							text-align center
+							content ""
+							overflow visible
+							font-size 1.4rem
+							border-radius 3px
+							box-shadow 0px 1px 1px rgba(0,0,0,0.5), 0px 1px 1px rgba(255,255,255,0.8) inset
+
+					
+					&:not(:checked) + label
+						opacity 0.4
+
+						&:before
+							content ""
+
+					&:checked + label
+						opacity 1
+
+						&:before
+							content "✔"
+							position absolute				
+							color green
+
+			.timePicker
+				column(3/5)
+				position relative
+
+
+				@media screen and (max-width: 1024px)
+					column(3/4)
+				
+				@media screen and (max-width: 768px)
+					stack()
+					column(1)
+					margin-top (vFlow/2)
+					
+					
+
+
+				position relative
+
+				& *
+					span(1/6)
+
+					@media screen and (max-width: 768px)
+						span(1/4)
+
+				select
+					font-size 1.3em
+					padding 4px
+					font-family economica, sans-serif
+					appearance none
+					cursor pointer
+
+					&:nth-child(1)
+						text-indent 80%
+
+				span.steamLabel
+					align(vertical)
+					text-align center
+					cursor pointer
+
+					&.steam
+						color darken(green, 30%)
+
+					&.noSteam
+						opacity 0.4
+						color darken(red, 30%)
+				
